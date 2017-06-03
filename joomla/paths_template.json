@@ -1,0 +1,5 @@
+{
+	"joomla": "<path-to-local-joomla>/",
+	"package": "<folder-for-temp-packages>/",
+	"extensions": "<path-to-joomla-extensions>"
+}

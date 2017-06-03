@@ -1,0 +1,26 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "local Joomla",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "joomla"
+  ],
+  "author": "",
+  "license": "",
+  "homepage": "",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-compress": "^1.4.3",
+    "grunt-joomla-packager": "0.1.0-b10",
+    "grunt-joomlaindexer": "^0.1.1",
+    "grunt-sync": "^0.6.2"
+  }
+}
