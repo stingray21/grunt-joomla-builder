@@ -39,7 +39,6 @@ module.exports = function(grunt) {
 
 
     grunt.registerTask('default', ['joomlaindexer']);
-    grunt.registerTask('build_mod_tsvevents', ['joomla_packager:mod_tsvevents']);
     grunt.registerTask('build_ext', ['joomla_packager:extension']);
 
     grunt.registerTask('package', 'Package Joomla extension', function(ext) {
@@ -98,7 +97,7 @@ module.exports = function(grunt) {
         
         var child = grunt.util.spawn({
             grunt: true,
-            args: ['build:' + build],
+            args: ['build_sub:' + build],
             opts: {
                 cwd: paths.extensions + ext + '/Source/'
                 }
