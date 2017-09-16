@@ -31,15 +31,14 @@ module.exports = function(grunt) {
 
     // load path from separate json file that is not synced with git
     grunt.config.set('paths', grunt.file.readJSON('paths.json'));
-    // --> paths.json => e.g.
+    // --> ext.json => e.g.
     // {
-    //     "joomla": "D:\\xampp\\htdocs\\<joomla-folder>\\",
+    //     "joomla": "D:\\xampp\\htdocs\\handball\\hb_joomla3\\",
     //     "package": "zzz_packages/"
     // }
 
 
     grunt.registerTask('default', ['joomlaindexer']);
-    grunt.registerTask('build_ext', ['joomla_packager:extension']);
 
     grunt.registerTask('package', 'Package Joomla extension', function(ext) {
         
@@ -67,7 +66,7 @@ module.exports = function(grunt) {
             grunt.log.writeln('Build extension: ' + ext + ' (type: ' + type + ', name: ' + name + ')');
             grunt.config.set('ext', {'packageName': ext, 'type': type, 'name': name });
 
-            grunt.task.run('build_ext');
+            grunt.task.run('joomla_packager:extension');
         } else {
             grunt.warn(ext + ' is no Joomla! extension');
         }
@@ -89,15 +88,16 @@ module.exports = function(grunt) {
     // run grunt file in extensions folder
     grunt.registerTask('run-grunt', 'Run grunt in Joomla extensions folder', function(ext, build) {
         
+        grunt.log.writeln('Call run-grunt from local joomla (' + ext + ',' + build + ')');
+
         var paths = require('./paths.json');
         // console.log(paths);
-		grunt.log.writeln('Build extension (' + build + ') in ' + paths.extensions + ext);
-		
+
         var cb = this.async();
         
         var child = grunt.util.spawn({
             grunt: true,
-            args: ['build_sub:' + build],
+            args: ['build:' + build],
             opts: {
                 cwd: paths.extensions + ext + '/Source/'
                 }
