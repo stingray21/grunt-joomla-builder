@@ -24,6 +24,6 @@ Package Joomla! Extensions with grunt
 
 
 * In extension folder  
-	`grunt build:<major|minor|patch>:<yes|no>`  
-	default is `patch`  
+	`grunt build:<major|minor|patch|no>:<yes|no>`  
+	default is `patch`  (`no` if version number should not be bumped)
 	default for import (second parameter) is `yes` (`yes` will import files from local joomla installation, `no` will just package and bump version)
