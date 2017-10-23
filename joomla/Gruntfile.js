@@ -79,7 +79,7 @@ module.exports = function(grunt) {
             grunt.log.writeln('Building patch (build:patch)');
             build = 'patch';
         }
-        grunt.log.writeln('Build extension: ' + ext);
+        grunt.log.writeln(('Build extension: ' + ext) ['blue']);
 
         grunt.task.run('package:' + ext);
         grunt.task.run('run-grunt:' + ext + ':' + build);
