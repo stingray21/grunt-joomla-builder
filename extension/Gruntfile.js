@@ -15,7 +15,8 @@ module.exports = function(grunt) {
                     dest:  './<%= ext.name %>/',  
                 }],
                 pretend: false, // Don't do any IO. Before you run the task with `updateAndDelete` PLEASE MAKE SURE it doesn't remove too much. 
-                verbose: false // Display log messages when copying files 
+                verbose: false, // Display log messages when copying files  
+                updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
             }
         },
         'string-replace': {
@@ -109,7 +110,7 @@ module.exports = function(grunt) {
         grunt.task.run('update-manifest');
 
         // not actual file name (seconds might be different)
-        grunt.log.writeln('Compress file (' + ext.name + '_' + grunt.template.today('yyyymmdd_HHMMss') + '.zip)');
+        grunt.log.writeln('Compress file (' + ext.name + '_' + grunt.template.today('yyyymmdd_HHMMss') + '_<%= pkg.version %>' + '.zip)');
         grunt.task.run('compress');
     });
 
